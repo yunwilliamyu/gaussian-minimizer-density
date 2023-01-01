@@ -21,11 +21,13 @@ for chrom in s_chr:
         chrom_text = "".join(chrom.split('\n')[1:])
         chrom_dict[chrom_id] = chrom_text
 
+tel_array = []
 print("{", end='')
 for tel in tel_annot:
     name_string = '-'.join([str(x) for x in tel])
     tel_text = chrom_dict[tel[0]][tel[1]:tel[2]].upper()
-    print('"' + name_string + '":"' + tel_text + '", ', end='')
+    tel_array.append('"' + name_string + '":"' + tel_text + '"')
+print(','.join(tel_array))
 print("}")
 # Note the trailing comma if you want to use this in anything other than a Python dictionary
 
